@@ -1,0 +1,169 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="d-grid gap-2 d-md-block">
+                <button data-bs-toggle="modal" data-bs-target="#modalAgregarHotel" class="btn btn-primary" type="button"><i class="bi bi-plus-square"></i></button>
+                <hr>
+              </div>
+        </div>
+        <br/>
+        <br/>
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-5" *ngFor="let hotel of modelObtenerHotel">
+                <div class="card mb-1">
+                    <div  class="card-header" class="p-3 mb-2 bg-primary text-white">
+                    {{hotel.nombre}} <div class="dropdown" *ngIf="_usuarioService.obtenerIdentidad()._id === hotel.hospedado._id">
+                    </div> <button style="float: right;" class="btn btn-light btn-sm" type="button" id="dropdownSetting" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i></button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownSetting">
+                          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditarHotel" (click)="obtenerHotelId(hotel._id)">Editar</a></li>
+                          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario" (click)="obtenerHotelId(hotel._id)" >Eliminar</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">{{hotel.cuidad}}</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in.</p>
+                    <br/>
+                      <blockquote class="blockquote mb-0">
+                        <h6><footer class="blockquote-footer">Creador: <cite title="Source Title">{{hotel.hospedado.username}}</cite></footer></h6>
+                      </blockquote>
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalVerHotel" type="button">Caracteristicas</button>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <br/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal agregar Hotel -->
+<div  class="modal fade" id="modalAgregarHotel" tabindex="-1"  
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAgregarHotel">Agregar Hotel</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <label for="InputNombre" class="form-label">Nombre del hotel</label>
+                  <input type="text" class="form-control" id="InputNombre" name="nombre"
+                  #nombre="ngModel" [(ngModel)]="modelAgregarHotel.nombre">
+                </div>
+                <div class="mb-3">
+                  <label for="InputCuidad" class="form-label">Ciudad del hotel</label>
+                  <input type="text" class="form-control" id="InputCuidad" name="cuidad"
+                  #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">
+                </div>
+                <div class="mb-3">
+                  <label for="InputNombreTipoEvento" class="form-label">Tipo Evento</label>
+                  <input type="text" class="form-control" id="InputNombreTipoEvento" name="cuidad"
+                  #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">
+                </div>
+                <div class="mb-3">
+                  <label for="InputNombreEvento" class="form-label">Evento</label>
+                  <input type="text" class="form-control" id="InputNombreEvento" name="cuidad"
+                  #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">
+                </div>
+                <div class="mb-3">
+                  <label for="InputNombreServicio" class="form-label">Servicio Especial</label>
+                  <input type="text" class="form-control" id="InputNombreServicio" name="cuidad"
+                  #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">
+                </div>
+                <div class="mb-3">
+                  <label for="InputHabitaciones" class="form-label">Numero de habitaciones</label>
+                  <input type="text" class="form-control" id="InputHabitaciones" name="cuidad"
+                  #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="agregarHotel()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Eliminar Usuario-->
+<div class="modal fade" id="modalEliminarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEliminarUsuario">Eliminar Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estas seguro de eliminar el usuario {{modelAgregarHotel.nombre}}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" 
+          (click)=" eliminarHotel(modelAgregarHotel._id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Editar Hotel-->
+<div class="modal fade" id="modalEditarHotel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarHotel">Editar Hotel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"> 
+        <form>
+          <div class="mb-3">
+            <label for="inputUsuario" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputUsuario" 
+            name="nombre" #nombre="ngModel" [(ngModel)]="modelAgregarHotel.nombre">
+          </div>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Cuidad</label>
+            <input type="text" class="form-control" id="inputNombre" 
+            name="cuidad" #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">         
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="editarHotel()" >Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal ver Hotel-->
+<div class="modal fade" id="modalVerHotel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalVerHotel">Ver Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"> 
+        <form>
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input disabled type="email" class="form-control" id="inputEmail">
+          </div>
+          <div class="mb-3">
+            <label for="inputUsuario" class="form-label">Usuario</label>
+            <input disabled type="text" class="form-control" id="inputUsuario">
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
