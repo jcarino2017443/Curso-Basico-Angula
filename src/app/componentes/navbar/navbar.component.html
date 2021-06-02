@@ -1,5 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+
+  <!-- Navbar content -->
+<nav class="navbar navbar-expand-lg navbar navbar navbar-dark bg-primary">
+    <div class="container-fluid" >
       <a class="navbar-brand" href="#">Gestor Hoteles</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -16,7 +18,10 @@
             <a class="nav-link" routerLink='/hoteles' routerLinkActive='active'>Hoteles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='/usuarios' routerLinkActive='active'>Usuarios</a>
+            <a class="nav-link" routerLink='/graficas' routerLinkActive='active'>Hoteles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/usuarios' routerLinkActive='active'>Graficas</a>
           </li>
         </ul>
          <div class="d-flex" *ngIf="_usuarioService.obtenerIdentidad()">
@@ -24,8 +29,9 @@
            <img *ngIf="_usuarioService.obtenerIdentidad().imagen" [src]="_usuarioService.obtenerIdentidad().imagen" class="user-image">
            <img *ngIf="_usuarioService.obtenerIdentidad().imagen === null" src="/assets/perfil.png" class="user-image"> 
  
-          <a class="nav-link">{{ _usuarioService.obtenerIdentidad().username}}</a>
+          <a  class="nav-link text-light">{{ _usuarioService.obtenerIdentidad().username}}</a>
         </div> 
       </div>
     </div>
   </nav>
+  

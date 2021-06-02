@@ -10,6 +10,8 @@ import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HotelesComponent } from './componentes/hoteles/hoteles.component';
+import { GraficasComponent } from './componentes/graficas/graficas.component';
+import { ChartsModule } from '@rinminase/ng-charts';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { HotelesComponent } from './componentes/hoteles/hoteles.component';
     LoginComponent,
     NavbarComponent,
     UsuariosComponent,
-    HotelesComponent
+    HotelesComponent,
+    GraficasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
+          <br/>
             <div class="d-grid gap-2 d-md-block">
                 <button data-bs-toggle="modal" data-bs-target="#modalAgregarHotel" class="btn btn-primary" type="button"><i class="bi bi-plus-square"></i></button>
                 <hr>
@@ -63,22 +64,22 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="mb-3">
                   <label for="InputNombreTipoEvento" class="form-label">Tipo Evento</label>
                   <input type="text" class="form-control" id="InputNombreTipoEvento" name="cuidad"
-                  #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">
+                  #nombreTipoEvento="ngModel" [(ngModel)]="modelAgregarHotel.nombreTipoEvento">
                 </div>
                 <div class="mb-3">
                   <label for="InputNombreEvento" class="form-label">Evento</label>
                   <input type="text" class="form-control" id="InputNombreEvento" name="cuidad"
-                  #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">
+                  #nombreEvento="ngModel" [(ngModel)]="modelAgregarHotel.nombreEvento">
                 </div>
                 <div class="mb-3">
                   <label for="InputNombreServicio" class="form-label">Servicio Especial</label>
                   <input type="text" class="form-control" id="InputNombreServicio" name="cuidad"
-                  #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">
+                  #nombreServicio="ngModel" [(ngModel)]="modelAgregarHotel.nombreServicio">
                 </div>
                 <div class="mb-3">
                   <label for="InputHabitaciones" class="form-label">Numero de habitaciones</label>
                   <input type="text" class="form-control" id="InputHabitaciones" name="cuidad"
-                  #cuidad="ngModel" [(ngModel)]="modelAgregarHotel.cuidad">
+                  #habitaciones="ngModel" [(ngModel)]="modelAgregarHotel.habitaciones">
                 </div>
               </form>
         </div>

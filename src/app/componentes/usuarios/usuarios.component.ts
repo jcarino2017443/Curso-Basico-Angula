@@ -44,7 +44,20 @@ export class UsuariosComponent implements OnInit {
       response=>{
         console.log(response);
         this.obtenerUsuarios();
+      },
+      error =>{
+        console.log(<any>error)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+  
+        })
+        
       }
+      
     )
   }
   

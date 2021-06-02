@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
       })
   }
 
+  eliminarToken(){
+  
+  }
+
   login (){
     this._usuarioSerive.login(this.usuarioModel, 'false').subscribe(
       response=>{
