@@ -1,0 +1,34 @@
+<br>/
+<div class="container">
+    <div class="row">
+        <div class="col s6">
+            <ul class="list-group">
+                <li class="list-group-item active" [hidden]="Repositorios.length > 0"><p>cargando repositorios...</p></li>
+                <li class="list-group-item list-group-item-success" [hidden]="!RepositoryPrincipal"><h3>{{RepositoryPrincipal.name}}</h3>
+                <p>{{RepositoryPrincipal.descripcion}}</p></li>
+                <li class="list-group-item" *ngFor="let repo of Repositorios" (click)="setRepositorio(repo)">
+                    <h3>{{repo.name}}</h3>
+                    <p>{{repo.descripcion}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col s7">
+            <form >
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Nombre Repositorio</label>
+                    <input type="text" class="form-control" id="inputName"
+                    name="name" [(ngModel)]="newRepositorio.name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputDescripcion" class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="inputDescripcion" 
+                    name="descripcion" [(ngModel)]=" newRepositorio.descripcion">
+                  </div>
+                    <button type="button" class="btn btn-primary" (click)="addNewReport()">Agregar Repositorio</button>
+                     
+            </form>
+        </div>
+    </div>
+    
+
+</div>

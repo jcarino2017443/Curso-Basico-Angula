@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HotelesComponent } from './componentes/hoteles/hoteles.component';
 import { GraficasComponent } from './componentes/graficas/graficas.component';
 import { ChartsModule } from '@rinminase/ng-charts';
+import { CursoAngularComponent } from './componentes/curso-angular/curso-angular.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ChartsModule } from '@rinminase/ng-charts';
     NavbarComponent,
     UsuariosComponent,
     HotelesComponent,
-    GraficasComponent
+    GraficasComponent,
+    CursoAngularComponent
   ],
   imports: [
     BrowserModule,

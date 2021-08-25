@@ -12,12 +12,15 @@ import Swal from 'sweetalert2'
 export class UsuariosComponent implements OnInit {
   public usuarioList: any;
   public usuarioIdModel: Usuario;
-  constructor(private _usuarioService: UsuarioService) {
+  
+   constructor(public _usuarioService: UsuarioService) {
     this.usuarioIdModel = new Usuario("","","","","","","");
    }
 
   ngOnInit(): void {
-    this.obtenerUsuarios();
+    setTimeout(()=>this.obtenerUsuarios(),3000)
+    
+    
   }
 
   obtenerUsuarios(){
